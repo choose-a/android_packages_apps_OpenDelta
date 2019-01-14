@@ -247,12 +247,17 @@
                             android:id="@+id/progress_text2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="32dp"
                             android:ellipsize="marquee"
                             android:gravity="end"
                             android:maxLines="1"
                             android:textAppearance="@android:style/TextAppearance.Material.Small"
                             android:textColor="?android:attr/textColorPrimary" />
+
+                        <Space
+                            android:id="@+id/progress_end_margin"
+                            android:layout_width="32dp"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
@@ -288,8 +293,7 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:text="@string/button_flash_now"
-                        android:textAppearance="@android:style/TextAppearance.Material.Button"
-                        android:textColor="@color/button_color" />
+                        android:textAppearance="@android:style/TextAppearance.Material.Button" />
 
                     <Button
                         android:id="@+id/button_build_delta"
@@ -299,8 +303,7 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:text="@string/button_build_delta"
-                        android:textAppearance="@android:style/TextAppearance.Material.Button"
-                        android:textColor="@color/button_color" />
+                        android:textAppearance="@android:style/TextAppearance.Material.Button" />
 
                     <Button
                         android:id="@+id/button_check_now"
@@ -310,8 +313,17 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:text="@string/button_check_short"
-                        android:textAppearance="@android:style/TextAppearance.Material.Button"
-                        android:textColor="@color/button_color" />
+                        android:textAppearance="@android:style/TextAppearance.Material.Button" />
+
+                    <Button
+                        android:id="@+id/button_reboot_now"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:onClick="onButtonRebootNowClick"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/button_reboot_short"
+                        android:textAppearance="@android:style/TextAppearance.Material.Button" />
                 </LinearLayout>
             </LinearLayout>
 

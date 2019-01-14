@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Environment;
+import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 
 import java.io.File;
@@ -47,6 +48,9 @@ public class Config {
     private final static String PREF_SECURE_MODE_NAME = "secure_mode";
     private final static String PREF_SHOWN_RECOVERY_WARNING_SECURE_NAME = "shown_recovery_warning_secure";
     private final static String PREF_SHOWN_RECOVERY_WARNING_NOT_SECURE_NAME = "shown_recovery_warning_not_secure";
+    private final static String PREF_AB_PERF_MODE_NAME = "ab_perf_mode";
+    private final static boolean PREF_AB_PERF_MODE_DEFAULT = false;
+    private static final String PROP_AB_DEVICE = "ro.build.ab_update";
 
     private final SharedPreferences prefs;
 
@@ -226,6 +230,15 @@ public class Config {
         return getSecureModeCurrent();
     }
 
+    public boolean getABPerfModeCurrent() {
+        return prefs.getBoolean(PREF_AB_PERF_MODE_NAME, PREF_AB_PERF_MODE_DEFAULT);
+    }
+
+    public void setABPerfModeCurrent(boolean enable) {
+        prefs.edit()
+                .putBoolean(PREF_AB_PERF_MODE_NAME, enable).commit();
+    }
+
     public List<String> getFlashAfterUpdateZIPs() {
         List<String> extras = new ArrayList<String>();
 
@@ -293,5 +306,9 @@ public class Config {
 
     public String getAndroidVersion() {
         return android_version;
+    }
+
+    public static boolean isABDevice() {
+        return SystemProperties.getBoolean(PROP_AB_DEVICE, false);
     }
 }
